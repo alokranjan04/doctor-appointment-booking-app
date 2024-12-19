@@ -1,19 +1,19 @@
+// Third-party imports
 import * as Sentry from '@sentry/nextjs';
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
+// Components
 import RegisterForm from "@/components/forms/RegisterForm";
+
+// Actions
 import { getPatient, getUser } from "@/lib/actions/patient.actions";
-
-
-
 
 const Register = async ({ params: { userId } }: SearchParamProps) => {
   const user = await getUser(userId);
   const patient = await getPatient(userId);
 
-  Sentry.metrics.set("user_view_register",user.name)
-
+  Sentry.metrics.set("user_view_register", user.name);
 
   if (patient) redirect(`/patients/${userId}/new-appointment`);
 
@@ -31,7 +31,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
 
           <RegisterForm user={user} />
 
-          <p className="copyright py-12">© 2024 CarePluse</p>
+          <p className="copyright py-12">© 2024 CarePulse</p>
         </div>
       </section>
 
