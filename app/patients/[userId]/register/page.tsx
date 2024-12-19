@@ -5,8 +5,6 @@ import { redirect } from "next/navigation";
 
 // Components
 import RegisterForm from "@/components/forms/RegisterForm";
-
-// Actions
 import { getPatient, getUser } from "@/lib/actions/patient.actions";
 
 const Register = async ({ params: { userId } }: SearchParamProps) => {

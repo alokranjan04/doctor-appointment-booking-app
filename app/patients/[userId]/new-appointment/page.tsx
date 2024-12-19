@@ -1,4 +1,4 @@
-import { sentryTrace } from '@sentry/nextjs';
+import * as Sentry from '@sentry/nextjs';
 import Image from "next/image";
 
 import { AppointmentForm } from "@/components/forms/AppointmentForm";

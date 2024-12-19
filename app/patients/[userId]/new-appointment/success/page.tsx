@@ -5,14 +5,12 @@ import Link from "next/link";
 
 // UI Components
 import { Button } from "@/components/ui/button";
-
 // Constants and Utils
 import { Doctors } from "@/constants";
-import { formatDateTime } from "@/lib/utils";
-
 // Actions
 import { getAppointment } from "@/lib/actions/appointment.actions";
 import { getUser } from "@/lib/actions/patient.actions";
+import { formatDateTime } from "@/lib/utils";
 
 const RequestSuccess = async ({
   searchParams,
@@ -20,7 +18,7 @@ const RequestSuccess = async ({
 }: SearchParamProps) => {
   const appointmentId = (searchParams?.appointmentId as string) || "";
   const appointment = await getAppointment(appointmentId);
-
+  
   const doctor = Doctors.find(
     (doctor) => doctor.name === appointment.primaryPhysician
   );
