@@ -12,16 +12,17 @@ type FileUploaderProps = {
 };
 
 export const FileUploader = ({ files, onChange }: FileUploaderProps) => {
+  // Include onChange in the dependency array of useCallback
   const onDrop = useCallback((acceptedFiles: File[]) => {
     onChange(acceptedFiles);
-  }, []);
+  }, [onChange]); // <-- Add onChange here
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
     <div {...getRootProps()} className="file-upload">
       <input {...getInputProps()} />
-      {files && files?.length > 0 ? (
+      {files && files.length > 0 ? (
         <Image
           src={convertFileToUrl(files[0])}
           width={1000}
